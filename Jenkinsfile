@@ -10,7 +10,7 @@ pipeline {
 				sh "whoami"
 				sh "docker --version"
 		    		//sh "docker container prune"
-		    		sh "docker rm -f "
+		    		///sh "docker rm -f "
 				sh "docker run -itd -p 100:80 --name nginx nginx"
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // 
 				
-				sh "docker inspect nginx "
+				sh "docker container inspect nginx "
             }
         }
     }
