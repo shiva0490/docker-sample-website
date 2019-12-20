@@ -9,9 +9,9 @@ pipeline {
                 // 
 				sh "whoami"
 				sh "docker --version"
-		    		sh "docker container prune"
+		    		//sh "docker container prune"
 		    		sh "docker rm -f "
-				sh "docker run -itd -p 90:80 nginx"
+				sh "docker run -itd -p 100:80 --name nginx nginx"
             }
         }
         stage('ViewRunningContainers') { 
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // 
 				
-				sh "docker inspect "
+				sh "docker inspect nginx "
             }
         }
     }
