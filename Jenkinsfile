@@ -1,0 +1,31 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                echo "hello Build Stage"
+				sh "docker build -t jenkins-docker ."
+            }
+        }
+        stage('Tag') { 
+            steps {
+                echo "hello Tag Stage"
+				sh "docker tag jenkins-docker sforcloud/jenkins-image"
+				
+            }
+        }
+        stage('Login') { 
+            steps {
+                echo "Hello Login Stage"
+				sh "docker login --username=sforcloud --password=Asus12345"
+            }
+        }
+		stage('Push') { 
+            steps {
+                echo "Hello Pushing Image to DockerHub"
+				sh "docker push sforcloud/jenkins-image"
+            }
+        }
+    }
+}
+
