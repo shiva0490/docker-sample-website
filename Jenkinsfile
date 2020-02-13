@@ -1,6 +1,14 @@
 pipeline {
     agent any 
+	
+	
     stages {
+	
+		stage ('Clone') {
+            steps {
+                git branch: 'master', url: "https://github.com/sforcloud/docker-sample-website.git"
+            }
+			}
         stage('Build') { 
             steps {
                 echo "hello Build Stage"
